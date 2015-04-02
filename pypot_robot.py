@@ -136,8 +136,6 @@ def moveRobot(x, y, z, robot, up = 0):
 	setPositionToLeg(pos_patte6[0], pos_patte6[1], pos_patte6[2], robot.patte_6)
 	time.sleep(.2)
 	
-tmp = 0
-	
 def rotateRobot(angle, robot, up = 0):
 	global pos_patte1
 	global pos_patte2
@@ -152,31 +150,31 @@ def rotateRobot(angle, robot, up = 0):
 	theta4 = math.atan2(pos_patte4[1], pos_patte4[0]) + math.radians(angle)
 	theta5 = math.atan2(pos_patte5[1], pos_patte5[0]) + math.radians(angle)
 	theta6 = math.atan2(pos_patte6[1], pos_patte6[0]) + math.radians(angle)
-	
-	print math.degrees(math.atan2(pos_patte1[1], pos_patte1[0])), " : ", math.degrees(theta1)
-	print math.degrees(math.atan2(pos_patte2[1], pos_patte2[0])), " : ", math.degrees(theta2)
-	print math.degrees(math.atan2(pos_patte3[1], pos_patte3[0])), " : ", math.degrees(theta3)
-	print math.degrees(math.atan2(pos_patte4[1], pos_patte4[0])), " : ", math.degrees(theta4)
+
+	dist1 =  math.sqrt(pos_patte1[0]**2 + pos_patte1[1]**2)
+	dist2 =  math.sqrt(pos_patte2[0]**2 + pos_patte2[1]**2)
+	dist3 =  math.sqrt(pos_patte3[0]**2 + pos_patte3[1]**2)
+	dist4 =  math.sqrt(pos_patte4[0]**2 + pos_patte4[1]**2)
+	dist5 =  math.sqrt(pos_patte5[0]**2 + pos_patte5[1]**2)
+	dist6 =  math.sqrt(pos_patte6[0]**2 + pos_patte6[1]**2)
 	
 	if up == 0:
-		pos_patte1 = [pos_patte1[0] * math.cos(theta1), pos_patte1[1] * math.sin(theta1), pos_patte1[2]]
-		pos_patte2 = [pos_patte2[0] * math.cos(theta2), pos_patte2[1] * math.sin(theta2), pos_patte2[2]]
-		pos_patte3 = [pos_patte3[0] * math.cos(theta3), pos_patte3[1] * math.sin(theta3), pos_patte3[2]]
-		pos_patte4 = [pos_patte4[0] * math.cos(theta4), pos_patte4[1] * math.sin(theta4), pos_patte4[2]]
-		pos_patte5 = [pos_patte5[0] * math.cos(theta5), pos_patte5[1] * math.sin(theta5), pos_patte5[2]]
-		pos_patte6 = [pos_patte6[0] * math.cos(theta6), pos_patte6[1] * math.sin(theta6), pos_patte6[2]]
+		pos_patte1 = [dist1 * math.cos(theta1), dist1 * math.sin(theta1), pos_patte1[2]]
+		pos_patte2 = [dist2 * math.cos(theta2), dist2 * math.sin(theta2), pos_patte2[2]]
+		pos_patte3 = [dist3 * math.cos(theta3), dist3 * math.sin(theta3), pos_patte3[2]]
+		pos_patte4 = [dist4 * math.cos(theta4), dist4 * math.sin(theta4), pos_patte4[2]]
+		pos_patte5 = [dist5 * math.cos(theta5), dist5 * math.sin(theta5), pos_patte5[2]]
+		pos_patte6 = [dist6 * math.cos(theta6), dist6 * math.sin(theta6), pos_patte6[2]]
 	elif up == 1:
-		pos_patte1 = [pos_patte1[0] * math.cos(theta1), pos_patte1[1] * math.sin(theta1), pos_patte1[2]]
-		pos_patte3 = [pos_patte3[0] * math.cos(theta3), pos_patte3[1] * math.sin(theta3), pos_patte3[2]]
-		pos_patte5 = [pos_patte5[0] * math.cos(theta5), pos_patte5[1] * math.sin(theta5), pos_patte5[2]]
+		pos_patte1 = [dist1 * math.cos(theta1), dist1 * math.sin(theta1), pos_patte1[2]]
+		pos_patte3 = [dist3 * math.cos(theta3), dist3 * math.sin(theta3), pos_patte3[2]]
+		pos_patte5 = [dist5 * math.cos(theta5), dist5 * math.sin(theta5), pos_patte5[2]]
 	elif up == 2:
-		pos_patte2 = [pos_patte2[0] * math.cos(theta2), pos_patte2[1] * math.sin(theta2), pos_patte2[2]]
-		pos_patte4 = [pos_patte4[0] * math.cos(theta4), pos_patte4[1] * math.sin(theta4), pos_patte4[2]]
-		pos_patte6 = [pos_patte6[0] * math.cos(theta6), pos_patte6[1] * math.sin(theta6), pos_patte6[2]]
+		pos_patte2 = [dist2 * math.cos(theta2), dist2 * math.sin(theta2), pos_patte2[2]]
+		pos_patte4 = [dist4 * math.cos(theta4), dist4 * math.sin(theta4), pos_patte4[2]]
+		pos_patte6 = [dist6 * math.cos(theta6), dist5 * math.sin(theta6), pos_patte6[2]]
 	
-	global tmp
-	
-	print tmp,"\n",pos_patte1
+	print pos_patte1
 	print pos_patte2
 	print pos_patte3
 	print pos_patte4
