@@ -8,12 +8,19 @@ import kinematics
 from contextlib import closing
 from pypot.robot import from_json
 
+#~ pos_patte1=[110,0,-60]
+#~ pos_patte2=[100,-100,-60]
+#~ pos_patte3=[100,100,-60]
+#~ pos_patte4=[110,0,-60]
+#~ pos_patte5=[100,-100,-60]
+#~ pos_patte6=[100,100,-60]
+	
 pos_patte1=[110,0,-60]
-pos_patte2=[100,-100,-60]
-pos_patte3=[100,100,-60]
+pos_patte2=[100,100,-60]
+pos_patte3=[100,-100,-60]
 pos_patte4=[110,0,-60]
-pos_patte5=[100,-100,-60]
-pos_patte6=[100,100,-60]
+pos_patte5=[100,100,-60]
+pos_patte6=[100,-100,-60]
 
 def changeId (dxl_io) :
 	# we can scan the motors
@@ -91,11 +98,11 @@ def allMotorInitialPos(robot):
 	global pos_patte6
 	
 	pos_patte1=[110,0,-60]
-	pos_patte2=[100,-100,-60]
-	pos_patte3=[100,100,-60]
+	pos_patte2=[100,100,-60]
+	pos_patte3=[100,-100,-60]
 	pos_patte4=[110,0,-60]
-	pos_patte5=[100,-100,-60]
-	pos_patte6=[100,100,-60]
+	pos_patte5=[100,100,-60]
+	pos_patte6=[100,-100,-60]
 	
 	setPositionToLeg(pos_patte1[0], pos_patte1[1], pos_patte1[2], robot.patte_1)
 	setPositionToLeg(pos_patte2[0], pos_patte2[1], pos_patte2[2], robot.patte_2)
@@ -113,20 +120,20 @@ def moveRobot(x, y, z, robot, up = 0):
 	global pos_patte6
 	
 	if up == 0:
-		pos_patte1 = [pos_patte1[0] + y, pos_patte1[1] - x, pos_patte1[2] + z]
-		pos_patte2 = [pos_patte2[0] - x, pos_patte2[1] - y, pos_patte2[2] + z]
-		pos_patte3 = [pos_patte3[0] - x, pos_patte3[1] - y, pos_patte3[2] + z]
-		pos_patte4 = [pos_patte4[0] - y, pos_patte4[1] + x, pos_patte4[2] + z]
-		pos_patte5 = [pos_patte5[0] + x, pos_patte5[1] + y, pos_patte5[2] + z]
-		pos_patte6 = [pos_patte6[0] + x, pos_patte6[1] + y, pos_patte6[2] + z]
+		pos_patte1 = [pos_patte1[0] + y, pos_patte1[1] + x, pos_patte1[2] + z]
+		pos_patte2 = [pos_patte2[0] - x, pos_patte2[1] + y, pos_patte2[2] + z]
+		pos_patte3 = [pos_patte3[0] - x, pos_patte3[1] + y, pos_patte3[2] + z]
+		pos_patte4 = [pos_patte4[0] - y, pos_patte4[1] - x, pos_patte4[2] + z]
+		pos_patte5 = [pos_patte5[0] + x, pos_patte5[1] - y, pos_patte5[2] + z]
+		pos_patte6 = [pos_patte6[0] + x, pos_patte6[1] - y, pos_patte6[2] + z]
 	elif up == 1:
-		pos_patte1 = [pos_patte1[0] + y, pos_patte1[1] - x, pos_patte1[2] + z]
-		pos_patte3 = [pos_patte3[0] - x, pos_patte3[1] - y, pos_patte3[2] + z]
-		pos_patte5 = [pos_patte5[0] + x, pos_patte5[1] + y, pos_patte5[2] + z]
+		pos_patte1 = [pos_patte1[0] + y, pos_patte1[1] + x, pos_patte1[2] + z]
+		pos_patte3 = [pos_patte3[0] - x, pos_patte3[1] + y, pos_patte3[2] + z]
+		pos_patte5 = [pos_patte5[0] + x, pos_patte5[1] - y, pos_patte5[2] + z]
 	elif up == 2:
-		pos_patte2 = [pos_patte2[0] - x, pos_patte2[1] - y, pos_patte2[2] + z]
-		pos_patte4 = [pos_patte4[0] - y, pos_patte4[1] + x, pos_patte4[2] + z]
-		pos_patte6 = [pos_patte6[0] + x, pos_patte6[1] + y, pos_patte6[2] + z]
+		pos_patte2 = [pos_patte2[0] - x, pos_patte2[1] + y, pos_patte2[2] + z]
+		pos_patte4 = [pos_patte4[0] - y, pos_patte4[1] - x, pos_patte4[2] + z]
+		pos_patte6 = [pos_patte6[0] + x, pos_patte6[1] - y, pos_patte6[2] + z]
 	
 	setPositionToLeg(pos_patte1[0], pos_patte1[1], pos_patte1[2], robot.patte_1)
 	setPositionToLeg(pos_patte2[0], pos_patte2[1], pos_patte2[2], robot.patte_2)
@@ -134,7 +141,7 @@ def moveRobot(x, y, z, robot, up = 0):
 	setPositionToLeg(pos_patte4[0], pos_patte4[1], pos_patte4[2], robot.patte_4)
 	setPositionToLeg(pos_patte5[0], pos_patte5[1], pos_patte5[2], robot.patte_5)
 	setPositionToLeg(pos_patte6[0], pos_patte6[1], pos_patte6[2], robot.patte_6)
-	time.sleep(.2)
+	time.sleep(.1)
 	
 def rotateRobot(angle, robot, up = 0):
 	global pos_patte1
@@ -174,62 +181,62 @@ def rotateRobot(angle, robot, up = 0):
 		pos_patte4 = [dist4 * math.cos(theta4), dist4 * math.sin(theta4), pos_patte4[2]]
 		pos_patte6 = [dist6 * math.cos(theta6), dist5 * math.sin(theta6), pos_patte6[2]]
 	
-	print pos_patte1
-	print pos_patte2
-	print pos_patte3
-	print pos_patte4
-	print pos_patte5
-	print pos_patte6
+	setPositionToLeg(pos_patte1[0], pos_patte1[1], pos_patte1[2], robot.patte_1)
+	setPositionToLeg(pos_patte2[0], pos_patte2[1], pos_patte2[2], robot.patte_2)
+	setPositionToLeg(pos_patte3[0], pos_patte3[1], pos_patte3[2], robot.patte_3)
+	setPositionToLeg(pos_patte4[0], pos_patte4[1], pos_patte4[2], robot.patte_4)
+	setPositionToLeg(pos_patte5[0], pos_patte5[1], pos_patte5[2], robot.patte_5)
+	setPositionToLeg(pos_patte6[0], pos_patte6[1], pos_patte6[2], robot.patte_6)
+	time.sleep(.1)
 	
-	#~ setPositionToLeg(pos_patte1[0], pos_patte1[1], pos_patte1[2], robot.patte_1)
-	#~ setPositionToLeg(pos_patte2[0], pos_patte2[1], pos_patte2[2], robot.patte_2)
-	#~ setPositionToLeg(pos_patte3[0], pos_patte3[1], pos_patte3[2], robot.patte_3)
-	#~ setPositionToLeg(pos_patte4[0], pos_patte4[1], pos_patte4[2], robot.patte_4)
-	#~ setPositionToLeg(pos_patte5[0], pos_patte5[1], pos_patte5[2], robot.patte_5)
-	#~ setPositionToLeg(pos_patte6[0], pos_patte6[1], pos_patte6[2], robot.patte_6)
-	time.sleep(1)
-	
-def marche(robot):
+def marche(robot, distance_par_pas, nbpas):
 	i=0
-	while i != 5:
+	while i != nbpas:
 		moveRobot(0,0,30,robot, 1)
 		if i != 0:
-			moveRobot(-40,0,0,robot, 1)
-		moveRobot(40,0,0,robot, 2)
+			moveRobot(-distance_par_pas,0,0,robot, 1)
+		moveRobot(distance_par_pas,0,0,robot, 2)
 		moveRobot(0,0,-30,robot, 1)
 		moveRobot(0,0,30,robot, 2)
-		moveRobot(-40,0,0,robot, 2)
-		moveRobot(40,0,0,robot, 1)
+		moveRobot(-distance_par_pas,0,0,robot, 2)
+		moveRobot(distance_par_pas,0,0,robot, 1)
 		moveRobot(0,0,-30,robot, 2)
 		i = i+1
 		
-def rotation(robot):
+def rotation(robot, angle, nbtour):
 	i=0
-	rotateRobot(10,robot, 2)
-	#~ while i != 1:
-		#~ moveRobot(0,0,30,robot, 1)
-		#~ if i != 0:
-			#~ rotateRobot(-10,robot, 1)
-		#~ rotateRobot(10,robot, 2)
-		#~ moveRobot(0,0,-30,robot, 1)
-		#~ moveRobot(0,0,30,robot, 2)
-		#~ rotateRobot(-10,robot, 2)
-		#~ rotateRobot(10,robot, 1)
-		#~ moveRobot(0,0,-30,robot, 2)
-		#~ i = i+1
+	rotateRobot(angle,robot, 2)
+	while i != nbtour:
+		moveRobot(0,0,30,robot, 1)
+		if i != 0:
+			rotateRobot(-angle,robot, 1)
+		rotateRobot(angle,robot, 2)
+		moveRobot(0,0,-30,robot, 1)
+		moveRobot(0,0,30,robot, 2)
+		rotateRobot(-angle,robot, 2)
+		rotateRobot(angle,robot, 1)
+		moveRobot(0,0,-30,robot, 2)
+		i = i+1
 
 if __name__ == '__main__':
 	
 	with closing(pypot.robot.from_json('my_robot2.json')) as robot:
-		
 		allMotorNotCompliant(robot)
 		allMotorInitialPos(robot)
 		time.sleep(1)
-		
-		marche(robot)
-		#~ rotation(robot)
-			
-		#~ allMotorCompliant(robot)
+		key=input("direction: ")
+		while key != 0:
+			if key == 8 :
+				marche(robot, 50, 5)
+			elif key == 2:
+				marche(robot, -40, 1)
+			elif key == 6:
+				rotation(robot, 10, 9)
+			elif key == 4:
+				rotation(robot, -10, 9)
+			allMotorInitialPos(robot)
+			key=input("direction: ")
+
+		allMotorCompliant(robot)
 		pass
-		
 
